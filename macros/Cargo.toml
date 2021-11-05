@@ -25,6 +25,3 @@ quote = "1.0.2"
 [build-dependencies]
 lalrpop = "0.18"
 version_check = "0.9.1"
-
-[features]
-dodrio = []

@@ -201,10 +201,6 @@ use std::fmt::Display;
 #[proc_macro_hack(support_nested)]
 pub use typed_html_macros::html;
 
-#[cfg(feature = "dodrio_macro")]
-#[proc_macro_hack(support_nested)]
-pub use typed_html_macros::dodrio;
-
 pub mod dom;
 pub mod elements;
 pub mod events;

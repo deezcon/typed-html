@@ -4,9 +4,9 @@
 
 use typed_html_macros::declare_elements;
 
-use crate::OutputType;
 use crate::dom::{Node, TextNode};
 use crate::types::*;
+use crate::OutputType;
 
 // Marker traits for element content groups
 
@@ -18,7 +18,10 @@ macro_rules! marker_trait {
     ($trait:ident, $parent:ident) => {
         pub trait $trait<T: OutputType + Send>: $parent<T> {}
 
-        impl<T> IntoIterator for Box<dyn $trait<T>> where T: OutputType + Send {
+        impl<T> IntoIterator for Box<dyn $trait<T>>
+        where
+            T: OutputType + Send,
+        {
             type Item = Box<dyn $trait<T>>;
             type IntoIter = std::vec::IntoIter<Box<dyn $trait<T>>>;
 
@@ -48,7 +51,7 @@ marker_trait!(SelectContent);
 marker_trait!(TableContent);
 marker_trait!(TableColumnContent);
 
-declare_elements!{
+declare_elements! {
     html {
         xmlns: Uri,
     } with [head, body];
